@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 final class InfoDialog extends JDialog {
-	
+
 	private static final long serialVersionUID = 0L;
 
 	public InfoDialog (JFrame owner) {
@@ -19,11 +19,11 @@ final class InfoDialog extends JDialog {
 		add(l);
 		add(Box.createGlue()); add(Box.createGlue()); add(Box.createGlue());
 		add(new JLabel("Version 0.9.6 beta"));
-		add(new JLabel("   Copyright © 2006 Bernhard Waldbrunner   "));
+		add(new JLabel("   Copyright Â© 2006 Bernhard Waldbrunner   "));
 		add(Box.createGlue());
 		pack();
 		setLocation((Brieftaube.scr_w-getWidth())/2, (Brieftaube.scr_h-getHeight())/2);
 		setVisible(true);
 	}
-	
+
 }

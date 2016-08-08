@@ -47,7 +47,7 @@ final class MsgWindow extends JFrame
 	private AudioClip ac_shake;
 	private ConversationHandler h;
 	private HTMLEditorKit kit;
-	
+
 	public MsgWindow () {
 		super("Warten auf Teilnehmer ...");
 		setLayout(new BorderLayout());
@@ -57,7 +57,7 @@ final class MsgWindow extends JFrame
 		fc = new JFileChooser(); fc.setDialogType(JFileChooser.OPEN_DIALOG);
 		fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		fc.setDialogTitle("Datei senden");
-		fc.setApproveButtonText("Auswählen");
+		fc.setApproveButtonText("Ausw√§hlen");
 		sp = new SmileyPalette(this);
 		ac_shake = java.applet.Applet.newAudioClip(getClass().getResource("/res/ringer.aiff"));
 		log = new JTextPane();
@@ -105,20 +105,20 @@ final class MsgWindow extends JFrame
 		south = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		if (!Brieftaube.host) {
 			btn_info = new JButton("Info");
-			btn_info.setToolTipText("Zeigt Informationen über das Programm an.");
+			btn_info.setToolTipText("Zeigt Informationen √ºber das Programm an.");
 			btn_info.addActionListener(this);
 			south.add(btn_info);
 			btn_config = new JButton("Konfiguration");
-			btn_config.setToolTipText("Zeigt die aktuelle Konfiguration an bzw. ändert diese.");
+			btn_config.setToolTipText("Zeigt die aktuelle Konfiguration an bzw. √§ndert diese.");
 			btn_config.addActionListener(this);
 			south.add(btn_config);
 		}
 		btn_smileys = new JToggleButton("Smileys", false);
-		btn_smileys.setToolTipText("Zeigt/versteckt alle verfügbaren Smileys.");
+		btn_smileys.setToolTipText("Zeigt/versteckt alle verf√ºgbaren Smileys.");
 		btn_smileys.addActionListener(this);
 		south.add(btn_smileys);
 		btn_file = new JButton("Datei senden...");
-		btn_file.setToolTipText("Hier können Sie eine zu übertragende Datei auswählen.");
+		btn_file.setToolTipText("Hier k√∂nnen Sie eine zu √ºbertragende Datei ausw√§hlen.");
 		btn_file.addActionListener(this);
 		south.add(btn_file);
 		add(south, BorderLayout.SOUTH);
@@ -126,11 +126,11 @@ final class MsgWindow extends JFrame
 		setLocation((Brieftaube.scr_w-getWidth())/2, (Brieftaube.scr_h-getHeight())/2);
 		setVisible(true);
 	}
-	
+
 	void init (ConversationHandler h) {
 		this.h = h;
 	}
-	
+
 	void append (String html) {
 		if (Brieftaube.smiley)
 			for (int i = 0; i<SmileyPalette.alias.length; i++)
@@ -158,14 +158,14 @@ final class MsgWindow extends JFrame
 		else if (e.getSource()==btn_config) {
 			String s;
 			s = "Adresse des Hosts: " + Brieftaube.addr + "\n"
-				+ "Geöffneter Port: " + Brieftaube.port + "\n"
+				+ "Ge√∂ffneter Port: " + Brieftaube.port + "\n"
 				+ "Benutzername: " + Brieftaube.user + "\n"
 				+ "Speicherort: " + Brieftaube.storage + "\n"
-				+ "Optionen:\n" + (Brieftaube.local ? "   • Lokaler Status\n" : "")
-				+ (Brieftaube.smiley ? "   • Smileys als Bilder\n" : "")
-				+ (Brieftaube.compr ? "   • Kompression\n" : "")
-				+ (Brieftaube.html ? "   • HTML in Nachrichten auswerten\n" : "")
-				+ "\nWollen Sie die aktuelle Konfiguration verändern?\n"
+				+ "Optionen:\n" + (Brieftaube.local ? "   ‚Ä¢ Lokaler Status\n" : "")
+				+ (Brieftaube.smiley ? "   ‚Ä¢ Smileys als Bilder\n" : "")
+				+ (Brieftaube.compr ? "   ‚Ä¢ Kompression\n" : "")
+				+ (Brieftaube.html ? "   ‚Ä¢ HTML in Nachrichten auswerten\n" : "")
+				+ "\nWollen Sie die aktuelle Konfiguration ver√§ndern?\n"
 				+ "(Achtung! Damit wird die laufende Kommunikation beendigt!)";
 			if (JOptionPane.showConfirmDialog(this, s, "", JOptionPane.YES_NO_OPTION,
 				JOptionPane.PLAIN_MESSAGE)==JOptionPane.YES_OPTION) {
@@ -190,7 +190,7 @@ final class MsgWindow extends JFrame
 	public void componentShown (ComponentEvent e) {
 		msg.requestFocus();
 	}
-	
+
 	void shake () {
 		int x = getX(), y = getY();
 		ac_shake.play();
@@ -203,11 +203,11 @@ final class MsgWindow extends JFrame
 		}
 		//ac_shake.stop();
 	}
-	
+
 	static String quote (String str) {
 		return ('`' + str.replace("\\", "\\\\").replace("`", "\\`").replace("\n", "\\n").replace("\r", "\\r") + '`');
 	}
-	
+
 	static String to_html (String str) {
 		return str
 			.replace("&", "&amp;")
@@ -259,7 +259,7 @@ final class MsgWindow extends JFrame
 		msg.insert(new Character(ins).toString(), msg.getCaretPosition());
 		msg.setCaretPosition(msg.getCaretPosition()-1);
 	}
-	
+
 	private static char matchingParen (char p) {
 		if      (p=='(') return ')';
 		else if (p=='[') return ']';
@@ -304,12 +304,12 @@ final class MsgWindow extends JFrame
 			else if (Brieftaube.macosx)
 				Runtime.getRuntime().exec("open " + e.getURL());
 			else
-				JOptionPane.showMessageDialog(this, "Die übertragene Datei ist unter folgendem Pfad zu finden:\n\n"
-					+ e.getURL().getPath(), "Dateiübertragung", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Die √ºbertragene Datei ist unter folgendem Pfad zu finden:\n\n"
+					+ e.getURL().getPath(), "Datei√ºbertragung", JOptionPane.PLAIN_MESSAGE);
 		}
 		catch (IOException x) {
 			JOptionPane.showMessageDialog(this, x, "Fehler", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
+
 }

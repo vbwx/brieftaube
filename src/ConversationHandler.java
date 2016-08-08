@@ -23,12 +23,12 @@ final class ConversationHandler implements Runnable {
 	private Hashtable<String, TransmissionHandler> get, send;
 	Calendar cal;
 	private boolean running = true;
-	
+
 	public ConversationHandler (Socket s, MsgWindow a, HostPanel p) {
 		this(s, a);
 		this.p = p;
 	}
-	
+
 	public ConversationHandler (Socket s, MsgWindow a) {
 		this.a = a;
 		this.s = s;
@@ -86,7 +86,7 @@ final class ConversationHandler implements Runnable {
 			}
 			a.append("<p class=\"remote\">" + MsgWindow.to_html(user) + " ist online.</p>");
 			a.msg.setEnabled(true); a.msg.grabFocus();
-			a.setTitle(Brieftaube.user + " — " + user);
+			a.setTitle(Brieftaube.user + " √ë " + user);
 			while (!(str = in.readLine().trim()).equals("CIAO") && running) {
 				tmp = null;
 				if (str.startsWith("`")) tmp = getField(str, 1);
@@ -133,7 +133,7 @@ final class ConversationHandler implements Runnable {
 			if (Brieftaube.local && s!=null && a!=null) {
 				cal = new GregorianCalendar();
 				a.append("<p class=\"local\">Die Verbindung zu " + s.getInetAddress().getHostAddress() + " wurde um " +
-					cal.getTime() + " ordnungsgemäß abgebaut.</p>");
+					cal.getTime() + " ordnungsgem&auml;&szlig; abgebaut.</p>");
 			}
 			s = null;
 		}
@@ -148,7 +148,7 @@ final class ConversationHandler implements Runnable {
 		if (Brieftaube.host) p.decrease();
 		if (a!=null) a.append("<p class=\"remote\">" + MsgWindow.to_html(user) + " ist offline.</p>");
 	}
-	
+
 	static String getField (String src, int num) {
 		String field = "";
 		char[] y = new char[src.trim().length()];
@@ -182,7 +182,7 @@ final class ConversationHandler implements Runnable {
 		} catch (Exception x) { }
 		try { finalize(); } catch (Throwable t) { }
 	}
-	
+
 	void closeFile (String cname, boolean unlink) {
 		TransmissionHandler ptr = null;
 		if ((ptr = get.get(cname))!=null) {
@@ -192,7 +192,7 @@ final class ConversationHandler implements Runnable {
 			get.remove(cname);
 		}
 	}
-	
+
 	void closeTransmission (String cname) {
 		TransmissionHandler ptr = null;
 		if ((ptr = send.get(cname))!=null) {
@@ -200,7 +200,7 @@ final class ConversationHandler implements Runnable {
 			send.remove(cname);
 		}
 	}
-	
+
 	void newTransmission (String cname) {
 		TransmissionHandler h;
 		send.put(cname, h = new TransmissionHandler(cname, out, new TransceiverPanel(this), a));

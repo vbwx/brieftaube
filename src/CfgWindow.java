@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 final class CfgWindow extends JFrame implements ActionListener, ItemListener {
-	
+
 	private static final long serialVersionUID = 0L;
 	private JPanel p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11;
 	private JCheckBox chk_host, chk_compr, chk_local, chk_smiley, chk_html;
@@ -32,8 +32,8 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fc = new JFileChooser(); fc.setDialogType(JFileChooser.OPEN_DIALOG);
 		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		fc.setDialogTitle("Speicherort für übertragene Dateien");
-		fc.setApproveButtonText("Auswählen");
+		fc.setDialogTitle("Speicherort f√ºr √ºbertragene Dateien");
+		fc.setApproveButtonText("Ausw√§hlen");
 		p1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		p1.add(new JLabel("Benutzername"));
 		user = new JTextField(Brieftaube.user); user.setColumns(10);
@@ -48,18 +48,18 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 		p3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		p3.add(new JLabel("Adresse"));
 		addr = new JTextField(Brieftaube.addr); addr.setColumns(13);
-		p3.setToolTipText("Die Adresse gibt an, wer der Gesprächspartner ist.");
+		p3.setToolTipText("Die Adresse gibt an, wer der Gespr√§chspartner ist.");
 		p3.add(addr);
 		add(p3);
 		p2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		p2.add(new JLabel("TCP-Port"));
 		port = new JTextField(Brieftaube.port); port.setColumns(4);
-		port.setToolTipText("Durch einen Port wird das Programm von außen erreicht.");
+		port.setToolTipText("Durch einen Port wird das Programm von au√üen erreicht.");
 		p2.add(port);
 		p2.setToolTipText("Wenn dieser Computer der Host ist, muss die Firewall Anfragen an diesen Port durchlassen.");
 		add(p2);
 		p4 = new JPanel(new FlowLayout(FlowLayout.LEFT, FlowLayout.BOTTOM));
-		p4.add(new JLabel("Speicherort für übertragene Dateien:"));
+		p4.add(new JLabel("Speicherort f√ºr √ºbertragene Dateien:"));
 		add(p4);
 		p5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		storage = new JTextField(Brieftaube.storage);
@@ -67,7 +67,7 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 		storage.setBorder(new EmptyBorder(2, 2, 2, 2));
 		p5.add(storage);
 		btn_storage = new JButton("...");
-		btn_storage.setToolTipText("Hier wählen Sie einen anderen Pfad für erhaltene Dateien aus.");
+		btn_storage.setToolTipText("Hier w√§hlen Sie einen anderen Pfad f√ºr erhaltene Dateien aus.");
 		btn_storage.addActionListener(this);
 		p5.add(btn_storage);
 		add(p5);
@@ -77,7 +77,7 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 		p7.add(chk_compr); add(p7);
 		p8 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		chk_local = new JCheckBox("Lokalen Status anzeigen", Brieftaube.local);
-		chk_local.setToolTipText("Dieser Status zeigt erweiterte Informationen über die Kommunikation an.");
+		chk_local.setToolTipText("Dieser Status zeigt erweiterte Informationen √ºber die Kommunikation an.");
 		p8.add(chk_local); add(p8);
 		p9 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		chk_smiley = new JCheckBox("Smileys als Bilder darstellen", Brieftaube.smiley);
@@ -89,7 +89,7 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 		p11.add(chk_html); add(p11);
 		p10 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		btn_info = new JButton("Info");
-		btn_info.setToolTipText("Zeigt Informationen über das Programm an.");
+		btn_info.setToolTipText("Zeigt Informationen √ºber das Programm an.");
 		btn_info.addActionListener(this);
 		p10.add(btn_info);
 		btn_save = new JButton("Speichern");
@@ -100,8 +100,8 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 		btn_ok.setToolTipText("Hiermit starten Sie die Kommunikation bzw. den Host.");
 		btn_ok.addActionListener(this);
 		p10.add(btn_ok);
-		btn_quit = new JButton("Schließen");
-		btn_quit.setToolTipText("Beendet das Programm und löscht alle bisherigen Eingaben.");
+		btn_quit = new JButton("Schlie√üen");
+		btn_quit.setToolTipText("Beendet das Programm und l√∂scht alle bisherigen Eingaben.");
 		btn_quit.addActionListener(this);
 		p10.add(btn_quit);
 		add(p10);
@@ -110,7 +110,7 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 		setLocation((Brieftaube.scr_w-getWidth())/2, (Brieftaube.scr_h-getHeight())/2);
 		setVisible(true);
 	}
-	
+
 	public void actionPerformed (ActionEvent e) {
 		if (e.getSource()==btn_quit)
 			System.exit(0);
@@ -126,42 +126,42 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 			String info = "";
 			if (!storage.getText().matches("[^\\?\\*<>\"|]+")) {
 				if (storage.getText().equals(""))
-					info += "\n• Sie müssen einen Speicherort für empfangene Dateien angeben!";
+					info += "\n‚Ä¢ Sie m√ºssen einen Speicherort f√ºr empfangene Dateien angeben!";
 				else
-					info += "\n• Pfade zu Verzeichnissen dürfen bestimmte reservierte Zeichen nicht enthalten:\n"
+					info += "\n‚Ä¢ Pfade zu Verzeichnissen d√ºrfen bestimmte reservierte Zeichen nicht enthalten:\n"
 						+ "   ? * < > \" |";
 				errors = true;
 			}
 			else if (!new File(storage.getText()).isDirectory() && !new File(storage.getText()).mkdirs()) {
-				info += "\n• Das als Speicherort angegebenes Verzeichnis existiert nicht\n"
+				info += "\n‚Ä¢ Das als Speicherort angegebenes Verzeichnis existiert nicht\n"
 					+ "   und konnte auch nicht erstellt werden!";
 				errors = true;
 			}
 			if (!port.getText().matches("\\d{1,5}")) {
 				if (port.getText().equals(""))
-					info += "\n• Sie müssen eine Portnummer angeben!";
+					info += "\n‚Ä¢ Sie m√ºssen eine Portnummer angeben!";
 				else
-					info += "\n• Ports sind ein- bis fünfstellige Zahlen.";
+					info += "\n‚Ä¢ Ports sind ein- bis f√ºnfstellige Zahlen.";
 				errors = true;
 			}
 			if (!user.getText().matches(".{1,32}")) {
 				if (user.getText().equals(""))
-					info += "\n• Sie müssen einen Benutzernamen eingeben!";
+					info += "\n‚Ä¢ Sie m√ºssen einen Benutzernamen eingeben!";
 				else
-					info += "\n• Benutzernamen dürfen maximal 32 Zeichen lang sein.";
+					info += "\n‚Ä¢ Benutzernamen d√ºrfen maximal 32 Zeichen lang sein.";
 				errors = true;
 			}
 			if (!addr.getText().matches("([a-zA-Z0-9\\-]\\.?)+")) {
 				if (addr.getText().equals(""))
-					info += "\n• Sie müssen die IP-Adresse oder den Domänen-Namen des Hosts eingeben!";
+					info += "\n‚Ä¢ Sie m√ºssen die IP-Adresse oder den Dom√§nen-Namen des Hosts eingeben!";
 				else
-					info += "\n• Für die Adresse sind nur Buchstaben, Zahlen, Bindestriche und Punkte erlaubt.\n"
+					info += "\n‚Ä¢ F√ºr die Adresse sind nur Buchstaben, Zahlen, Bindestriche und Punkte erlaubt.\n"
 						+ "   Bsp. DNS: der-host.domaene.tld\n"
 						+ "   Bsp. IP: 10.11.12.13";
 				errors = true;
 			}
 			if (errors)
-				JOptionPane.showMessageDialog(this, "Bei der Überprüfung der Felder sind folgende Fehler aufgetreten:\n"
+				JOptionPane.showMessageDialog(this, "Bei der √úberpr√ºfung der Felder sind folgende Fehler aufgetreten:\n"
 					+ info, "", JOptionPane.WARNING_MESSAGE);
 			else {
 				Brieftaube.user = user.getText();
@@ -197,5 +197,5 @@ final class CfgWindow extends JFrame implements ActionListener, ItemListener {
 			addr.setText(s_addr); addr.setEnabled(true);
 		}
 	}
-	
+
 }

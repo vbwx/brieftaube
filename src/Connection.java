@@ -9,10 +9,10 @@ import java.net.UnknownHostException;
 import javax.swing.JOptionPane;
 
 final class Connection implements Runnable {
-	
+
 	private Socket remote = null;
 	private ServerSocket local = null;
-	
+
 	public Connection () {
 		remote = null;
 		if (Brieftaube.host)
@@ -20,7 +20,7 @@ final class Connection implements Runnable {
 				local = new ServerSocket(new Integer(Brieftaube.port));
 			}
 			catch (BindException e) {
-				JOptionPane.showMessageDialog(new CfgWindow(), "Der von Ihnen gew둯lte Port ist bereits in Verwendung!",
+				JOptionPane.showMessageDialog(new CfgWindow(), "Der von Ihnen gew채hlte Port ist bereits in Verwendung!",
 					"", JOptionPane.WARNING_MESSAGE);
 				try { finalize(); } catch (Throwable t) { }
 			}
@@ -35,19 +35,19 @@ final class Connection implements Runnable {
 			}
 			catch (UnknownHostException e) {
 				JOptionPane.showMessageDialog(new CfgWindow(), "Der Host konnte nicht erreicht werden!\n"
-					+ "냕erpr웖en Sie die angegebene Adresse, Portnummer und ob Sie mit dem\nNetzwerk oder dem "
+					+ "체berpr체fen Sie die angegebene Adresse, Portnummer und ob Sie mit dem\nNetzwerk oder dem "
 					+ "Internet verbunden sind.", "Verbindung gescheitert", JOptionPane.WARNING_MESSAGE);
 			}
 			catch (ConnectException e) {
 				JOptionPane.showMessageDialog(new CfgWindow(), "Der Host hat die Verbindung abgelehnt. Versuchen Sie es "
-					+ "sp둻er noch einmal.", "Verbindung gescheitert", JOptionPane.ERROR_MESSAGE);
+					+ "sp채ter noch einmal.", "Verbindung gescheitert", JOptionPane.ERROR_MESSAGE);
 			}
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e, "Unbekannte Ausnahme", JOptionPane.ERROR_MESSAGE);
 				System.exit(2);
 			}
 	}
-	
+
 	public void run () {
 		ConversationHandler h = null;
 		MsgWindow w = null;
@@ -83,7 +83,7 @@ final class Connection implements Runnable {
 			}
 		}
 	}
-	
+
 	void close () {
 		try { local.close(); finalize(); } catch (Throwable t) { }
 	}

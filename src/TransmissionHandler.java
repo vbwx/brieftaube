@@ -13,7 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 final class TransmissionHandler implements Runnable {
-	
+
 	TransceiverPanel a;
 	private PrintStream s_out;
 	private FileOutputStream f_out = null;
@@ -23,7 +23,7 @@ final class TransmissionHandler implements Runnable {
 	private boolean running = true;
 	String fname;
 	private MsgWindow msg;
-	
+
 	public TransmissionHandler (String cname, PrintStream s_out, TransceiverPanel a, MsgWindow msg) {
 		this.a = a;
 		this.s_out = s_out;
@@ -43,7 +43,7 @@ final class TransmissionHandler implements Runnable {
 		}
 		a.name.setText(cname);
 	}
-	
+
 	public TransmissionHandler (String cname, boolean compr, int len, TransceiverPanel a, MsgWindow msg) {
 		String tmp;
 		int n = 0;
@@ -64,7 +64,7 @@ final class TransmissionHandler implements Runnable {
 		catch (IOException e) {
 			JFileChooser fc = new JFileChooser(Brieftaube.home);
 			fc.setDialogType(JFileChooser.SAVE_DIALOG); fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-			fc.setDialogTitle("WŠhlen Sie einen anderen Pfad"); fc.setApproveButtonText("Speichern");
+			fc.setDialogTitle("WÃ¤hlen Sie einen anderen Pfad"); fc.setApproveButtonText("Speichern");
 			if (fc.showSaveDialog(a)==JFileChooser.APPROVE_OPTION)
 				fname = fc.getSelectedFile().getAbsolutePath();
 			else {
@@ -129,7 +129,7 @@ final class TransmissionHandler implements Runnable {
 		}
 		a.finish();
 	}
-	
+
 	void append (byte[] content) {
 		try {
 			if (compr) {
@@ -159,7 +159,7 @@ final class TransmissionHandler implements Runnable {
 			a.abort();
 		}
 	}
-	
+
 	public void interrupt () {
 		running = false;
 		if (f_out!=null) try { f_out.close(); } catch (Exception e) { }

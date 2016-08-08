@@ -12,13 +12,13 @@ import javax.swing.JPanel;
 final class HostPanel extends JFrame implements ActionListener, WindowListener {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JLabel num;
 	private static int quant = 0;
 	private JButton stop, config, info;
 	private Connection a;
 	private JPanel p1, p2;
-	
+
 	public HostPanel (Connection a) {
 		super(Brieftaube.macosx ? "Host-Paneel" : "Brieftaube: Host");
 		setResizable(false);
@@ -33,7 +33,7 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 		add(p1);
 		p2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		info = new JButton("Info");
-		info.setToolTipText("Zeigt Informationen über das Programm an.");
+		info.setToolTipText("Zeigt Informationen √ºber das Programm an.");
 		info.addActionListener(this);
 		p2.add(info);
 		stop = new JButton("Stopp");
@@ -41,7 +41,7 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 		stop.addActionListener(this);
 		p2.add(stop);
 		config = new JButton("Konfig.");
-		config.setToolTipText("Zeigt die aktuelle Konfiguration an bzw. ändert diese.");
+		config.setToolTipText("Zeigt die aktuelle Konfiguration an bzw. √§ndert diese.");
 		config.addActionListener(this);
 		p2.add(config);
 		add(p2);
@@ -58,14 +58,14 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 			new InfoDialog(this);
 		else if (e.getSource()==config) {
 			String s;
-			s = "Geöffneter Port: " + Brieftaube.port + "\n"
+			s = "Ge√∂ffneter Port: " + Brieftaube.port + "\n"
 				+ "Benutzername: " + Brieftaube.user + "\n"
 				+ "Speicherort: " + Brieftaube.storage + "\n"
-				+ "Optionen:\n" + (Brieftaube.local ? "   • Lokaler Status\n" : "")
-				+ (Brieftaube.smiley ? "   • Smileys als Bilder\n" : "")
-				+ (Brieftaube.compr ? "   • Kompression\n" : "")
-				+ (Brieftaube.html ? "   • HTML in Nachrichten auswerten\n" : "")
-				+ "\nWollen Sie die aktuelle Konfiguration verändern?";
+				+ "Optionen:\n" + (Brieftaube.local ? "   ‚Ä¢ Lokaler Status\n" : "")
+				+ (Brieftaube.smiley ? "   ‚Ä¢ Smileys als Bilder\n" : "")
+				+ (Brieftaube.compr ? "   ‚Ä¢ Kompression\n" : "")
+				+ (Brieftaube.html ? "   ‚Ä¢ HTML in Nachrichten auswerten\n" : "")
+				+ "\nWollen Sie die aktuelle Konfiguration ver√§ndern?";
 			if (JOptionPane.showConfirmDialog(this, s, "", JOptionPane.YES_NO_OPTION,
 				JOptionPane.PLAIN_MESSAGE)==JOptionPane.YES_OPTION) {
 				dispose();
@@ -75,11 +75,11 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 			}
 		}
 	}
-	
+
 	void increase () {
 		num.setText(new Integer(++quant).toString());
 	}
-	
+
 	void decrease () {
 		num.setText(new Integer(--quant).toString());
 	}
@@ -89,7 +89,7 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 	public void windowClosed (WindowEvent e) { }
 
 	public void windowClosing (WindowEvent e) {
-		if (JOptionPane.showConfirmDialog(this, "Wollen Sie Brieftaube wirklich beenden?\nDabei werden sämtliche "
+		if (JOptionPane.showConfirmDialog(this, "Wollen Sie Brieftaube wirklich beenden?\nDabei werden s√§mtliche "
 			+ "Verbindungen geschlossen!", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION) {
 			dispose();
 			a.close();
