@@ -5,54 +5,31 @@
 #    metal
 #    motif
 #    gtk (doesn't work anymore on OS X)
-#    tiny
 #    default (depends on OS)
 laf=
 
-# Now, select a nice theme ...
-#    Metal provides:
-#       steel
-#       ocean
-#    Tiny provides:
-#       Default
-#       Earth
-#       Forest
-#       Golden
-#       Lego
-#       Light
-#       Nightly
-#       Plastic
-#       Pool
-#       Silver
-#       Small
+# For Metal, you can choose between two themes ...
+#    steel
+#    ocean
 # otherwise, keep the line empty after the equals sign (=)
 theme=
 
-# Don't care about the following lines ...
+# Stop editing here.
 
 
 case "$laf" in
 	metal) laf=javax.swing.plaf.metal.MetalLookAndFeel ;;
 	gtk)   laf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ;;
 	motif) laf=com.sun.java.swing.plaf.motif.MotifLookAndFeel ;;
-	tiny)  laf=de.muntjak.tinylookandfeel.TinyLookAndFeel ;;
 	default | "")  laf="" ;;
 esac
 
 case "$theme" in
 	steel | ocean)
-		theme="-Dswing.metalTheme=$theme"
-		;;
-	Earth | Forest | Golden | Lego | Light | Nightly | Plastic | Pool | \
-	Silver | Small)
-		cp themes/$theme.theme Default.theme; theme=""
-		;;
-	[Dd]efault | "")
-		rm Default.theme 2>/dev/null; theme=""
-		;;
+		theme="-Dswing.metalTheme=$theme" ;;
+	"") ;;
 	*)
-		echo "brieftaube: Unknown theme!"
-		;;
+		echo "brieftaube: Unknown theme!" ;;
 esac
 
-java ${laf:+-Dswing.defaultlaf=}$laf $theme -jar Brieftaube.jar $1 &>/dev/null &
+java ${laf:+-Dswing.defaultlaf=}$laf $theme -jar "$(dirname $0)/Brieftaube.jar" $1 &>/dev/null &
