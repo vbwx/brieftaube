@@ -24,7 +24,7 @@ if %laf%~==motif~   set laf=com.sun.java.swing.plaf.motif.MotifLookAndFeel
 if %theme%~==steel~   goto switch
 if %theme%~==ocean~   goto switch
 if %theme%~==~        goto exec
-echo Brieftaube: Warning: Unknown theme!
+echo Brieftaube: Unknown theme!
 set theme=
 goto exec
 

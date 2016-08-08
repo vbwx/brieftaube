@@ -22,6 +22,7 @@ case "$laf" in
 	gtk)   laf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ;;
 	motif) laf=com.sun.java.swing.plaf.motif.MotifLookAndFeel ;;
 	default | "")  laf="" ;;
+	*) &>2 echo "brieftaube: Unknown look-and-feel!"; laf="" ;;
 esac
 
 case "$theme" in
@@ -29,7 +30,8 @@ case "$theme" in
 		theme="-Dswing.metalTheme=$theme" ;;
 	"") ;;
 	*)
-		echo "brieftaube: Unknown theme!" ;;
+		&>2 echo "brieftaube: Unknown theme!" ;;
 esac
 
-java ${laf:+-Dswing.defaultlaf=}$laf $theme -jar "$(dirname $0)/Brieftaube.jar" $1 &>/dev/null &
+cd $(dirname $0)
+java ${laf:+-Dswing.defaultlaf=}$laf $theme -jar Brieftaube.jar $1 &>/dev/null &
