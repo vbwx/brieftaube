@@ -1,6 +1,0 @@
-#!/bin/bash
-
-javac -d bin src/*.java
-cd bin
-jar cfm ../dist/Brieftaube.jar ../src/Manifest *
-cd ..
