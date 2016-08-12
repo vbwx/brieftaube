@@ -122,7 +122,7 @@ final class MsgWindow extends JFrame
 		btn_file.addActionListener(this);
 		south.add(btn_file);
 		add(south, BorderLayout.SOUTH);
-		setSize(440, 380);
+		setSize(550, 500);
 		setLocation((Brieftaube.scr_w-getWidth())/2, (Brieftaube.scr_h-getHeight())/2);
 		setVisible(true);
 	}
