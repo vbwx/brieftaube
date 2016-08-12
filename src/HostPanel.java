@@ -15,7 +15,7 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 
 	private JLabel num;
 	private static int quant = 0;
-	private JButton stop, config, info;
+	private JButton config, info;
 	private Connection a;
 	private JPanel p1, p2;
 
@@ -36,10 +36,6 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 		info.setToolTipText("Zeigt Informationen über das Programm an.");
 		info.addActionListener(this);
 		p2.add(info);
-		stop = new JButton("Stopp");
-		stop.setToolTipText("Beenden des Hosts.");
-		stop.addActionListener(this);
-		p2.add(stop);
 		config = new JButton("Konfig.");
 		config.setToolTipText("Zeigt die aktuelle Konfiguration an bzw. ändert diese.");
 		config.addActionListener(this);
@@ -50,18 +46,15 @@ final class HostPanel extends JFrame implements ActionListener, WindowListener {
 	}
 
 	public void actionPerformed (ActionEvent e) {
-		if (e.getSource()==stop) {
-			a.close(); a = null;
-			stop.setEnabled(false);
-		}
-		else if (e.getSource()==info)
+		if (e.getSource()==info)
 			new InfoDialog(this);
 		else if (e.getSource()==config) {
 			String s;
 			s = "Geöffneter Port: " + Brieftaube.port + "\n"
 				+ "Benutzername: " + Brieftaube.user + "\n"
 				+ "Speicherort: " + Brieftaube.storage + "\n"
-				+ "Optionen:\n" + (Brieftaube.local ? "   • Lokaler Status\n" : "")
+				+ "Optionen:\n"
+				+ (Brieftaube.local ? "   • Lokaler Status\n" : "")
 				+ (Brieftaube.smiley ? "   • Smileys als Bilder\n" : "")
 				+ (Brieftaube.compr ? "   • Kompression\n" : "")
 				+ (Brieftaube.html ? "   • HTML in Nachrichten auswerten\n" : "")
