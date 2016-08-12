@@ -86,7 +86,7 @@ final class ConversationHandler implements Runnable {
 			}
 			a.append("<p class=\"remote\">" + MsgWindow.to_html(user) + " ist online.</p>");
 			a.msg.setEnabled(true); a.msg.grabFocus();
-			a.setTitle(Brieftaube.user + " Ñ " + user);
+			a.setTitle(Brieftaube.user + " – " + user);
 			while (!(str = in.readLine().trim()).equals("CIAO") && running) {
 				tmp = null;
 				if (str.startsWith("`")) tmp = getField(str, 1);
