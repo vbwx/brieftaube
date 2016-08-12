@@ -12,18 +12,11 @@ final public class Brieftaube {
 	public static boolean host = false, compr = true, smiley = true, local = false, html = false;
 	public static String user = "", port = "2226", addr = "", storage, home, dir;
 	private static float ver = 0.96F;
-	
+
 	public static void main (String[] args) {
-		if (args.length==1)
-			new Niche(new Integer(args[0]));
-		else if (args.length>1) {
-			System.err.println("Brieftaube Niche: Too many arguments!");
-			System.exit(1);
-		}
-		else
-			new Brieftaube();
+		new Brieftaube();
 	}
-	
+
 	Brieftaube () {
 		macosx = System.getProperty("os.name").equals("Mac OS X");
 		windows = System.getProperty("os.name").equals("Windows");
@@ -71,5 +64,5 @@ final public class Brieftaube {
 		}
 		return true;
 	}
-	
+
 }
